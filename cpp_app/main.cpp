@@ -191,8 +191,9 @@ enum months_t { january=1, february, march, april,
                 may, june, july, august,
                 september, october, november, december} y2k;
 
-
+// Enumerated types (enum)
 enum class Colors {black, blue, green, cyan, red, purple, yellow, white};
+// Enumerated types with enum class
 enum class EyeColor : char {blue, green, brown};
 
 int main ()
