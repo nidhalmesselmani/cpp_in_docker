@@ -785,22 +785,33 @@ int table[TABLE_SIZE];
 #define TABLE_SIZE 100
 #endif
  
-int table[TABLE_SIZE];
+int table1[TABLE_SIZE];
 
 
 
 #if defined ARRAY_SIZE
 #define TABLE_SIZE ARRAY_SIZE
 #elif !defined BUFFER_SIZE
-#define TABLE_SIZE 128
+#define TABLE_SIZE1 128
 #else
 #define TABLE_SIZE BUFFER_SIZE
 #endif 
 
+/*#line 20 "assigning variable"
+*/
 
+//Predefined macro names
+/*cout << __LINE__ << "\n";
+ cout << __FILE__ << "\n";
+ cout << __DATE__	 << "\n"; 
+ cout << __TIME__ << "\n";
+  cout << __cplusplus << "\n";
+   cout << __STDC_HOSTED__ << "\n";
+   cout << __STDC__ << "\n";
+  /* cout << __STDC_MB_MIGHT_NEQ_WC__ << "\n";*/
+/*   cout <<  __STDC_VERSION__	 << "\n"; */
 int main ()
 {
-  
 
   return 0;
 
