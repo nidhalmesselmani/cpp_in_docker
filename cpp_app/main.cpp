@@ -3,7 +3,7 @@
 #include <sstream>
 #include <exception>
 #include <typeinfo>
-
+#include <fstream>
 
 using namespace std;
 
@@ -810,9 +810,91 @@ int table1[TABLE_SIZE];
    cout << __STDC__ << "\n";
   /* cout << __STDC_MB_MIGHT_NEQ_WC__ << "\n";*/
 /*   cout <<  __STDC_VERSION__	 << "\n"; */
+
+
+// basic file operations
+/*
+  ofstream myfile;
+  myfile.open ("example.txt");
+  myfile << "Writing this to a file.\n";
+  myfile.close();
+  ofstream myfile ("example.bin", ios::out | ios::app | ios::binary);
+myfile << "Writing this to a file.\n";
+myfile.close();
+ ofstream myfile ("example.bin", ios::out | ios::app | ios::binary);
+ myfile.close();
+ cout << myfile.is_open();
+ // writing on a text file
+   ofstream myfile ("example.txt");
+  if (myfile.is_open())
+  {
+    myfile << "This is a line.\n";
+    myfile << "This is another line.\n";
+    myfile.close();
+  }
+  else cout << "Unable to open file";
+
+    string line;
+  ifstream myfile ("example.txt");
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      cout << line << '\n';
+    }
+    myfile.close();
+  }
+
+  else cout << "Unable to open file"; 
+
+  // obtaining file size
+    streampos begin,end;
+  ifstream myfile ("example.bin", ios::binary);
+  begin = myfile.tellg();
+  myfile.seekg (0, ios::end);
+  end = myfile.tellg();
+  myfile.close();
+  cout << "size is: " << (end-begin) << " bytes.\n";
+
+
+   streampos size;
+  char * memblock;
+
+  ifstream file ("example.bin", ios::in|ios::binary|ios::ate);
+  if (file.is_open())
+  {
+    size = file.tellg();
+    cout << "tt" << size << "\n";
+    memblock = new char [size];
+    file.seekg (0, ios::beg);
+   
+  
+    file.read (memblock, size);
+    file.close();
+
+    cout << "the entire file content is in memory";
+
+    delete[] memblock;
+  }
+  else cout << "Unable to open file";
+*/
 int main ()
 {
+streampos size;
+  char * memblock;
 
-  return 0;
+  ifstream file ("example.bin", ios::in|ios::binary|ios::ate);
+  if (file.is_open())
+  {
+    size = file.tellg();
+    memblock = new char [size];
+    file.seekg (0, ios::beg);
+    file.read (memblock, size);
+    file.close();
 
+    cout << "the entire file content is in memory" << memblock;
+
+    delete[] memblock;
+  }
+  else cout << "Unable to open file";
 }
